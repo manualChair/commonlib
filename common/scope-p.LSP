@@ -9,5 +9,7 @@
 (include '<:float "./common/float_comparison")
 
 (defun scope-p (num scope-min scope-max)
-  (and (<=:float scope-min num) (<=:float num scope-max))
+  (and (or (null scope-min) (<=:float scope-min num))
+       (or (null scope-max) (<=:float num scope-max))
+  )
 )
