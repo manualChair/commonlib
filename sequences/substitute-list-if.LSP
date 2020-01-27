@@ -1,24 +1,24 @@
 ;;;(include 'substitute-list-if "./sequences/substitute-list-if")
 
-;;;(substitute-list-if $_new-item $_predicate $_alist $_start $_end $_count $_from-end)
+;;;(substitute-list-if new-item predicate alist start end count from-end)
 ;;;  substitute-if of only list version
 ;;;
-;;;$_new-item : atom or list or string
+;;;new-item : atom or list or string
 ;;;
-;;;$_predicate : $_predicate function
-;;;              function apply single argment.
+;;;predicate : predicate function
+;;;            function apply single argment.
 ;;;
-;;;$_alist : list
+;;;alist : list
 ;;;
-;;;$_start : integer or nil
+;;;start : integer or nil
 ;;;
-;;;$_end : integer or nil
+;;;end : integer or nil
 ;;;
-;;;$_count : integer
+;;;count : integer or nil
 ;;;
-;;;$_from-end : atom (T or nil)
+;;;from-end : atom (T or nil)
 ;;;
-;;;return : list or string
+;;;return : list
 
 ;;; +------------------------------------------------------+
 ;;;   Copyright (c) 2020 manual chair japan                 

@@ -8,7 +8,7 @@
 ;;;
 ;;;mode : symbol ('LEFT 'RIGHT 'BOTH or nil)
 ;;;
-;;;return : string or list etc.
+;;;return : list
 
 ;;; +------------------------------------------------------+
 ;;;   Copyright (c) 2020 manual chair japan                 

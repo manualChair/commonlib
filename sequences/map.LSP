@@ -1,12 +1,12 @@
 ;;;(include 'map "./sequences/map")
 
-;;;(map $_type $_function $_list-of-sequence)
+;;;(map type function list-of-sequence)
 ;;;
-;;;$_type        : symbol
+;;;type        : symbol (STR LIST SLIST SYM VARIANT SAFEARRAY VECTOR)
 ;;;
-;;;$_function    : function
+;;;function    : function
 ;;;
-;;;$_list-of-sequence : list of sequence
+;;;list-of-sequence : list of sequence
 ;;;
 ;;;retrun  : atom, or list
 ;;;

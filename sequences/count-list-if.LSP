@@ -1,16 +1,16 @@
 ;;;(include 'count-list-if "./sequences/count-list-if")
 
-;;;(count-list-if $_predicate $_list $_start $_end)
+;;;(count-list-if predicate alist start end)
 ;;;  count-list-if of only list version
 ;;;
-;;;$_predicate : $_predicate function
-;;;              function apply single argment.
+;;;predicate : predicate function
+;;;            function apply single argment.
 ;;;
-;;;$_list : list
+;;;alist : list
 ;;;
-;;;$_start : integer or nil
+;;;start : integer or nil
 ;;;
-;;;$_end : integer or nil
+;;;end : integer or nil
 ;;;
 ;;;return : integer
 

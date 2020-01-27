@@ -1,19 +1,19 @@
 ;;;(include 'position-if "./sequences/position-if")
 
-;;;(position-if $_predicate $_sequence $_start $_end $_from-end)
+;;;(position-if predicate sequence start end from-end)
 ;;;
-;;;$_predicate : predicate function
+;;;predicate : predicate function
 ;;;            function apply single argment.
 ;;;
-;;;$_sequence : sequence
+;;;sequence : sequence
 ;;;
-;;;$_start : integer or nil
+;;;start : integer or nil
 ;;;
-;;;$_end : integer or nil
+;;;end : integer or nil
 ;;;
-;;;$_from-end : atom (T or nil)
+;;;from-end : atom (T or nil)
 ;;;
-;;;return : integer of index. zero-indexed.
+;;;return : integer of index(zero-indexed) or nil
 ;;;
 ;;; sequence is STR SYM LIST VARIANT(STR SAFEARRAY) SAFEARRAY
 

@@ -1,21 +1,21 @@
 ;;;(include 'substitute-if "./sequences/substitute-if")
 
-;;;(substitute-if $_new-item $_predicate $_sequence $_start $_end $_count $_from-end)
+;;;(substitute-if new-item predicate sequence start end count from-end)
 ;;;
-;;;$_new-item : atom or list
+;;;new-item : atom or list
 ;;;
-;;;$_predicate : predicate function
-;;;              function apply single argment.
+;;;predicate : predicate function
+;;;            function apply single argment.
 ;;;
-;;;$_sequence : sequence
+;;;sequence : sequence
 ;;;
-;;;$_start : integer or nil
+;;;start : integer or nil
 ;;;
-;;;$_end : integer or nil
+;;;end : integer or nil
 ;;;
-;;;$_count : integer
+;;;count : integer or nil
 ;;;
-;;;$_from-end : atom (T or nil)
+;;;from-end : atom (T or nil)
 ;;;
 ;;;return : sequence
 ;;;

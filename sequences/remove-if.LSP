@@ -1,19 +1,19 @@
 ;;;(include 'remove-if "./sequences/remove-if")
 
-;;;(remove-if $_predicate $_sequence $_start $_end $_count $_from-end)
+;;;(remove-if predicate sequence start end count from-end)
 ;;;
-;;;$_predicate : $_predicate function
-;;;              function apply single argment.
+;;;predicate : predicate function
+;;;            function apply single argment.
 ;;;
-;;;$_sequence : sequence
+;;;sequence : sequence
 ;;;
-;;;$_start : integer or nil
+;;;start : integer or nil
 ;;;
-;;;$_end : integer or nil
+;;;end : integer or nil
 ;;;
-;;;$_count : integer
+;;;count : integer or nil
 ;;;
-;;;$_from-end : atom (T or nil)
+;;;from-end : atom (T or nil)
 ;;;
 ;;;return : sequence
 ;;;

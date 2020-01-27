@@ -12,7 +12,7 @@
 ;;;
 ;;;end : integer or nil
 ;;;
-;;;count : integer
+;;;count : integer or nil
 ;;;
 ;;;from-end : atom (T or nil)
 ;;;

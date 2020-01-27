@@ -1,5 +1,17 @@
 ;;;(include 'fill-list "./sequences/fill-list")
 
+;;;(fill-list alist item start end)
+;;;
+;;;alist : list
+;;;
+;;;item : atom or list
+;;;
+;;;start : integer or nil
+;;;
+;;;end : integer or nil
+;;;
+;;;retrun  : list
+
 ;;; +------------------------------------------------------+
 ;;;   Copyright (c) 2020 manual chair japan                 
 ;;;   Released under the MIT license                        

@@ -4,7 +4,7 @@
 ;;;
 ;;;sequence : sequence
 ;;;
-;;;start end : integer
+;;;start end : integer or nil
 ;;;
 ;;;return : sequence
 

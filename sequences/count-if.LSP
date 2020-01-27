@@ -1,15 +1,15 @@
 ;;;(include 'count-if "./sequences/count-if")
 
-;;;(count-if $_predicate $_sequence $_start $_end)
+;;;(count-if predicate sequence start end)
 ;;;
-;;;$_predicate : $_predicate function
-;;;              function apply single argment.
+;;;predicate : predicate function
+;;;            function apply single argment.
 ;;;
-;;;$_sequence : sequence
+;;;sequence : sequence
 ;;;
-;;;$_start : integer or nil
+;;;start : integer or nil
 ;;;
-;;;$_end : integer or nil
+;;;end : integer or nil
 ;;;
 ;;;return : integer
 ;;;

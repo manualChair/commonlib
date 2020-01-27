@@ -4,7 +4,7 @@
 ;;;  position-if of only list version
 ;;;
 ;;;predicate : predicate function
-;;;              function apply single argment.
+;;;            function apply single argment.
 ;;;
 ;;;list : list
 ;;;
@@ -14,7 +14,7 @@
 ;;;
 ;;;from-end : atom (T or nil)
 ;;;
-;;;return : integer of index. zero-indexed. or nil
+;;;return : integer of index(zero-indexed) or nil
 
 ;;; +------------------------------------------------------+
 ;;;   Copyright (c) 2020 manual chair japan                 

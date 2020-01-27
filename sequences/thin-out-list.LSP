@@ -4,7 +4,7 @@
 ;;;
 ;;;alist : list
 ;;;
-;;;start end : integer
+;;;start end : integer or nil
 ;;;
 ;;;return : list
 

@@ -26,10 +26,10 @@
 ;;;(3 2 1 4 0)
 ;;;_$ (remove-duplicates '(0 1 2 3 4 3 4 2 4 1 4 0) nil nil nil T)
 ;;;(0 1 2 3 4)
-;;;_$ (remove-duplicates "ï¿½ï¿½ï¿½ï¿½Ý‚ï¿½ï¿½ï¿½Ì‚ï¿½ï¿½ï¿½ï¿½É‚ï¿½ï¿½ï¿½Ý‚ï¿½ï¿½ï¿½" nil nil nil nil)
-;;;"ï¿½Ì‚ï¿½ï¿½ï¿½ï¿½É‚ï¿½ï¿½ï¿½Ý‚ï¿½ï¿½ï¿½"
-;;;_$ (remove-duplicates "ï¿½ï¿½ï¿½ï¿½Ý‚ï¿½ï¿½ï¿½Ì‚ï¿½ï¿½ï¿½ï¿½É‚ï¿½ï¿½ï¿½Ý‚ï¿½ï¿½ï¿½" nil nil nil T)
-;;;"ï¿½ï¿½ï¿½ï¿½Ý‚ï¿½ï¿½ï¿½Ì‚ï¿½ï¿½ï¿½ï¿½ï¿½"
+;;;_$ (remove-duplicates "‚ ‚é‚Ý‚©‚ñ‚Ì‚¤‚¦‚É‚ ‚é‚Ý‚©‚ñ" nil nil nil nil)
+;;;"‚Ì‚¤‚¦‚É‚ ‚é‚Ý‚©‚ñ"
+;;;_$ (remove-duplicates "‚ ‚é‚Ý‚©‚ñ‚Ì‚¤‚¦‚É‚ ‚é‚Ý‚©‚ñ" nil nil nil T)
+;;;"‚ ‚é‚Ý‚©‚ñ‚Ì‚¤‚¦‚É"
 
 (include 'sequencep-list "./sequences/_sequencep-list")
 (include 'sequence-type-of "./sequences/_sequence-type-of")

@@ -24,8 +24,10 @@
 
 ;;;_$ (replacelis-all '(((0 1) A) ((2 3 4) < >)) '(0 1 2 3 4 0 1 2 3 4) nil nil nil)
 ;;;(A < > A < >)
-;;;_$ (replacelis-all '(("A" . "ï¿½ï¿½") ("I" . "ï¿½ï¿½") ("U" . "ï¿½ï¿½")) "A I U E O" nil nil nil)
-;;;"ï¿½ï¿½ ï¿½ï¿½ ï¿½ï¿½ E O"
+;;;_$ (replacelis-all '(("A" . "a") ("I" . "i") ("U" . "u")) "A I U E O" nil nil nil)
+;;;"a i u E O"
+;;;_$ (replacelis-all '(("A" . "‚ ") ("I" . "‚¢") ("U" . "‚¤")) "A I U E O" nil nil nil)
+;;;"‚  ‚¢ ‚¤ E O"
 
 (include 'type-of "./types/type-of")
 (include 'coerce "./types/coerce")

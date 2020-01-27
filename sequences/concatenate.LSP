@@ -2,7 +2,7 @@
 
 ;;;(concatenate atype list-of-sequence)
 ;;;
-;;;atype            : symbol
+;;;atype            : symbol (STR LIST SLIST SYM VARIANT SAFEARRAY VECTOR)
 ;;;
 ;;;list-of-sequence : list of sequence
 ;;;
@@ -15,6 +15,13 @@
 ;;;   Released under the MIT license                        
 ;;;   https://opensource.org/licenses/mit-license.php       
 ;;; +------------------------------------------------------+
+
+;;;_$ (concatenate 'LIST '((0 1 2 3) (A B C D)))
+;;;(0 1 2 3 A B C D)
+;;;_$ (concatenate 'STR '("Auto" "CAD"))
+;;;"AutoCAD"
+;;;_$ (concatenate 'SLIST '("Auto" "CAD"))
+;;;(65 117 116 111 67 65 68)
 
 (include 'type-of "./types/type-of")
 (include 'coerce "./types/coerce")
