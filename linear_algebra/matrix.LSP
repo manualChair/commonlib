@@ -85,7 +85,9 @@
 
 (setq matrix list)
 
-(defun matrix:equal (amatrix1 amatrix2) (equal:float m1 m2))
+(defun matrix:equal (amatrix1 amatrix2)
+  (vl-every 'vector:equal amatrix1 amatrix2)
+)
 
 (defun matrix:row (amatrix m) (nth m amatrix))
 
