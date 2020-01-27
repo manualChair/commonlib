@@ -38,7 +38,9 @@ https://github.com/manualChair/include.git
 
 # ライブラリ関数のリファレンス
 
-執筆中です。
+下記のサイトを参照してください。
+
+http://manualchair.html.xdomain.jp/commonlib/jp/index.html
 
 # ライブラリの概要
 
@@ -125,7 +127,7 @@ Common LISP には型の変換に coerce 関数が用いられます。本ライ
 
 シンボル	|説明
 ---|---
-SLIST	|文字列をリストに変換したもので、マルチバイト文字の構造を付けたもの。
+SLIST	|文字列をリストに変換したもので、マルチバイト文字の構造を付けたもの
 VECTOR	|一次元のセーフ配列
 BOOL	|ActiveX で使われるシンボル :vlax-true と :vlax-false
 CHAR	|一文字を表す整数、またはマルチバイト文字を表す構造体
