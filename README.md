@@ -37,11 +37,13 @@ The first line of the source code for each library function contains commented o
 
 # LIBRARY FUNCTION REFERENCE
 
-I'm writing.
+Please refer to the following site.
+
+http://manualchair.html.xdomain.jp/commonlib/en/index.html
 
 # LIBRARY OVERVIEW
 
-## List of Folders
+## Folder Structure
 
 Library source code is divided into folders by category. This folder follows the reference section at the end of Paul Graham's ANSI Common Lisp. In addition there are "common" and "linear_algebra" folders. The “common” folder contains unique functions commonly used in the library, and the “linear_algebra” folder contains functions related to linear algebra that do not exist in Common LISP.
 
@@ -112,7 +114,7 @@ Common LISP uses the coerce function for type conversion. In this library, too, 
 
 For example, AutoCAD's selection set and list of ename can be converted to each other with the coerce function. Furthermore, conversion to a safe array or variant type can be performed by specifying SAFEARRAY or VARIANT.
 
-In addition, the source type is an AutoLISP type, but the destination type can specify some special types. The main thing is that if you specify LIST when converting a string to a list, it will be a list of integers representing ASCII character codes by the AutoLISP standard vl-string-> list function. However, if you specify the custom type SLIST, it will be converted to a custom structured list representing a string containing multibyte characters. Also, by specifying a special type VECTOR as the conversion destination, it can be converted to a flat one-dimensional safe array used by ActiveX functions from a multi-dimensional list.
+In addition, the source type is an AutoLISP type, but the destination type can specify some special types. The main thing is that if you specify LIST when converting a string to a list, it will be a list of integers representing ASCII character codes by the AutoLISP standard vl-string->list function. However, if you specify the custom type SLIST, it will be converted to a custom structured list representing a string containing multibyte characters. Also, by specifying a special type VECTOR as the conversion destination, it can be converted to a flat one-dimensional safe array used by ActiveX functions from a multi-dimensional list.
 
 Basically, the type symbols that can be specified for the source and destination types are as follows, depending on the type of AutoLISP. It is the same as the return value of the type function.
 
@@ -136,6 +138,6 @@ In this library, the handling of character strings is internally converted into 
 
 ## Comparison of Real Numbers
 
-Real numbers always include calculation errors. If there is a condition such as what to do if the comparison of real numbers in this library is equal, the comparison of real numbers will judge the value set in the global variable \*tolerance\* as an allowable value. Used in linear algebra-related functions.
+Real numbers always include calculation errors. If there is a condition such as what to do if the comparison of real numbers in this library is equal, the comparison of real numbers will judge the value set in the global variable \*tolerance\* as an allowable value. Used in linear algebra related functions.
 
 (EOF)
