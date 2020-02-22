@@ -717,7 +717,7 @@
 (defun coerce:type-group (atype) (cdr (assoc atype *coerce:type-groups*)))
 
 (defun coerce:func-table (object)
-  (cdr (assoc (coerce:type-group (type-of object)) *coerce:func-table*))
+  (cdr (assoc (coerce:type-group (type object)) *coerce:func-table*))
 )
 
 (defun coerce:check (value)
