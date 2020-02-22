@@ -64,22 +64,22 @@
           (+ cursor heading)
        )
     )
-    32 ;|(ascii "")|;
+    32 ;|(ascii " ")|;
   )
 )
 
 (defun format:tabulate:non-option ()
-  (if (< heading cursor)
+  (if (<= heading cursor)
     (make-string
       (- (+ heading (* column (1+ (/ (- cursor heading) column)))) cursor)
-      32 ;|(ascii "")|;
+      32 ;|(ascii " ")|;
     )
     (make-string (- heading cursor) 32)
   )
 )
 
 (defun format:tabulate (modifier heading column)
-  (setq heading (max (default (eval heading) '1) 1)
+  (setq heading (max (default (eval heading) '1) 0)
         column  (max (default (eval column) '1) 1)
   )
   (if (not (null (member 'AT modifier)))
