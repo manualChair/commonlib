@@ -64,7 +64,7 @@
       )
       (if (= mode 'BOTH)
         (padding-list:both)
-        (if (plusp pad-count)
+        (if (<= 0 pad-count)
           (affix-list alist (make-list pad-count pad) mode)
           (if overflow
             (make-list width overflow)
