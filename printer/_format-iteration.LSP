@@ -13,7 +13,7 @@
 
 (defun format:recursive:sub (token-list value-list / value-index)
   (setq value-index 0)
-  (format:main token-list 'recursive-break nil)
+  (format:main token-list 'recursive-break cursor)
 )
 
 ;;
@@ -24,7 +24,7 @@
              (format:main
                (format:formatString (stringp-list (format:pop-value)))
                'recursive-break
-               nil
+               cursor
              )
              (format:recursive:sub
                (format:formatString (stringp-list (format:pop-value)))
@@ -58,7 +58,7 @@
          )
          (/= recursive-break 'BREAK)
     )
-     (setq result       (cons (format:main token-list 'recursive-break nil) result)
+     (setq result       (cons (format:main token-list 'recursive-break cursor) result)
            repeat-count (if repeat-count
                           (1- repeat-count)
                         )

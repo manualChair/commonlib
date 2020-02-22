@@ -80,17 +80,16 @@
 ;;
 
 (defun format:main
-       (token-list $break-symbol top-level / token-index token result)
+       (token-list $break-symbol cursor / token-index token result)
   (setq token-index 0)
   (if token-list
     (apply 'strcat
            (progn (while (and (not (eval $break-symbol))
                               (setq token (eval (format:pop-token)))
                          )
-                    (if top-level
-                      (setq cursor (+ cursor (strlen token)))
+                    (setq cursor (+ cursor (strlen token))
+                          result (cons token result)
                     )
-                    (setq result (cons token result))
                   )
                   (reverse result)
            )
@@ -99,19 +98,17 @@
   )
 )
 
-
 ;;
 
 (include 'format:formatString "./printer/_format-formatString")
 
 (defun format
-       (output formatString value-list / value-index cursor break astring)
+       (output formatString value-list / value-index format-top-level-break astring)
   (setq value-index 0
-        cursor      0
         astring     (format:main
                       (format:formatString (stringp-list formatString))
                       'format-top-level-break
-                      T
+                      0
                     )
   )
   (when output '(write-string astring output nil nil))

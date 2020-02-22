@@ -18,7 +18,7 @@
   (apply
     'strcat
     (mapcar (function (lambda (token)
-                        (if (equal token '(32) ;|" "|; )
+                        (if (equal token '(32) ;|" "|;)
                           " "
                           (if first-word
                             (string-downcase 'STR token nil nil)
@@ -58,14 +58,15 @@
 
 (defun format:case-conversion:enter
        (modifier / case-conversion-break result)
-  (setq result (format:case-conversion
-                 (format:main
-                   (apply 'append (format:in-parentheses 'case-conversion))
-                   'case-conversion-break
-                   nil
-                 )
-                 modifier
-               )
+  (setq
+    result (format:case-conversion
+             (format:main
+               (apply 'append (format:in-parentheses 'case-conversion))
+               'case-conversion-break
+               cursor
+             )
+             modifier
+           )
   )
   (if (= case-conversion-break 'EXIT)
     (set $break-symbol 'EXIT)

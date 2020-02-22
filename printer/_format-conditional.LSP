@@ -48,12 +48,11 @@
   (setq segments (format:conditional:non-option:default segments)
         index    (default (eval index) '(format:pop-value))
   )
-  (default
-    (if (and (integerp index) (not (minusp index)))
-      (default (nth index segments) 'default-segment)
-      default-segment
-    )
-    ''("")
+  (default (if (and (integerp index) (not (minusp index)))
+             (default (nth index segments) 'default-segment)
+             default-segment
+           )
+           ''("")
   )
 )
 
@@ -89,10 +88,12 @@
                                  (T (format:conditional:non-option segments))
                            )
                            'conditional-break
-                           nil
+                           cursor
                          )
   )
-  (if (= conditional-break 'EXIT) (set $break-symbol 'EXIT))
+  (if (= conditional-break 'EXIT)
+    (set $break-symbol 'EXIT)
+  )
   result
 )
 

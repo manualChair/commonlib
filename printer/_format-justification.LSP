@@ -130,7 +130,7 @@
                     (format:main
                       (cadr token-list)
                       'justification-break
-                      nil
+                      cursor
                     )
              )
              nil
@@ -166,23 +166,23 @@
 )
 
 (defun format:justification:eval (token-list / result)
-  (setq
-    result (vl-remove-if
-             (function (lambda (item) (or (null item) (= item ""))))
-             (mapcar
-               (function
-                 (lambda (token-list)
-                   (if (not justification-break)
-                     (if (vl-symbolp token-list)
-                       token-list
-                       (format:main token-list 'justification-break nil)
-                     )
+  (setq result
+         (vl-remove-if
+           (function (lambda (item) (or (null item) (= item ""))))
+           (mapcar
+             (function
+               (lambda (token-list)
+                 (if (not justification-break)
+                   (if (vl-symbolp token-list)
+                     token-list
+                     (format:main token-list 'justification-break cursor)
                    )
                  )
                )
-               token-list
              )
+             token-list
            )
+         )
   )
   (if (= justification-break 'EXIT)
     (set $break-symbol 'EXIT)
