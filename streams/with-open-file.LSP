@@ -20,5 +20,6 @@
      )
       (compose (function (lambda ($_msg) (close $stream) $_msg)) '*error*)
     )
+    (exit)
   )
 )
