@@ -29,7 +29,7 @@
               )
         alist (coerce (rtos (abs float-integer) 2 0) 'SLIST)
   )
-  (if integer-digit
+  (if (and integer-digit (< (length alist) integer-digit))
     (setq alist (padding-list
                   alist 'LEFT integer-digit nil 48 ;|(ascii "0")|;)
     )
@@ -62,15 +62,8 @@
 
 (defun format:fixed-format:rtos
        (float-value integer-digit decimal-digit add-sign grouping / int)
-  (append (if (not (zerop (setq int (fix (round-off float-value decimal-digit)))))
-            (format:fixed-format:rtos:integer int)
-            (if (minusp float-value)
-              '(45 48) ;|"-0"|;
-              (if add-sign
-                '(43 48) ;|"+0"|;
-                '(48) ;|"0"|;
-              )
-            )
+  (append (format:fixed-format:rtos:integer
+            (setq int (fix (round-off float-value decimal-digit)))
           )
           (if grouping
             (list (registry:getDecimal))
@@ -203,35 +196,6 @@
 
 ;;;
 
-;|
-(defun format:float (modifier   width      digits     exponents
-                     shift      overflow-code         pad-code
-                     exponent-code         /          arg
-                     base       ee         ww         d
-                     dd
-                    )
-  (setq arg  (format:pop-value)
-        base (log-b arg 10)
-        ee   (+ (default (eval exponents) '2) 2)
-        ww   (if width
-               (- width ee)
-             )
-        d    (default (eval digits) (max 0 (min base 7)))
-        dd   (- d base)
-  )
-  (format:skip-value -1)
-  (if (and (<= 0 dd) (<= dd d))
-    (format:fixed-format modifier ww d nil overflow-code pad-code)
-    (format:exponential
-      modifier      width         digits        exponents
-      shift         overflow-code pad-code      exponent-code
-     )
-  )
-)
-|;
-
-;;;
-
 (defun format:monetary:padding (alist-signed / sign alist)
   (setq sign  (if (and (= (car alist-signed) 43 ;|(ascii "+")|;)
                        (null (member 'AT modifier))
@@ -264,7 +228,7 @@
                   (format:monetary:padding
                     (format:fixed-format:rtos
                       (float (format:pop-value))
-                      (1+ integer-digit)
+                      integer-digit
                       digits
                       T
                       nil
