@@ -9,6 +9,8 @@
 ;;;
 ;;;pause       :  string, list, symbol, variant(string or safe-array), safe-array(integer)
 ;;;
+;;;quotation   :  string, list, symbol, variant(string or safe-array), safe-array(integer)
+;;;
 ;;;retrun : string or list etc.
 
 ;;; +------------------------------------------------------+
@@ -17,40 +19,46 @@
 ;;;   https://opensource.org/licenses/mit-license.php       
 ;;; +------------------------------------------------------+
 
-;;;_$ (unword 'STR '("A" "B" "C") ":")
+;;;_$ (unword 'STR '("A" "B" "C") ":" nil)
 ;;;"A:B:C"
-;;;_$ (unword 'SLIST '("A" "B" "C") ":")
+;;;_$ (unword 'SLIST '("A" "B" "C") ":" nil)
 ;;;(65 58 66 58 67)
-;;;_$ (unword 'STR nil ":")
-;;;""
-;;;_$ (unword 'SLIST nil ":")
+;;;_$ (unword 'SLIST nil ":" nil)
 ;;;nil
-;;;_$ (unword 'STR '((65) (66) (67)) '(58))
+;;;_$ (unword 'STR nil ":" nil)
+;;;""
+;;;_$ (unword 'STR '((65) (66) (67)) '(58) nil)
 ;;;"A:B:C"
-;;;_$ (unword 'STR '(A B C) ":")
-;;;"A:B:C"
-;;;_$ (unword 'SYM '(A B C) ":")
-;;;A:B:C
-;;;_$ (unword 'VARIANT '("A" "B" "C") ":")
+;;;_$ (unword 'STR '("A" "B:2:3" "C") ":" "\"")
+;;;"A:\"B:2:3\":C"
+;;;_$ (unword 'VARIANT '("A" "B" "C") ":" nil)
 ;;;#<variant 8 A:B:C>
-;;;_$ (unword 'SAFEARRAY '("A" "B" "C") ":")
-;;;#<safearray...>
 
 (include 'member-of-option-p "./common/member-of-option-p")
 (include 'coerce "./types/coerce")
-(include 'endp "./conses/endp")
+(include 'characterp "./characters/characterp")
+(include 'char-equal "./characters/char-equal")
 (include 'stringp "./strings/stringp")
-(include 'concatenate "./sequences/concatenate")
 (include 'to-variantp-string "./strings/_to-variantp-string")
+(include 'search "./sequences/search")
+(include 'concatenate "./sequences/concatenate")
+(include 'affix "./sequences/affix")
 
-(defun unword:sub (slist)
-  (if (and (not (endp slist)) (cdr slist))
-    (cons (car slist) (cons pause (unword:sub (cdr slist))))
-    slist
+(defun unword:quote (sequence)
+  (if (and quotation (search pause sequence 'char-equal nil nil nil))
+    (affix sequence quotation 'BOTH)
+    sequence
   )
 )
 
-(defun unword (atype list-string pause)
+(defun unword:sub (slist)
+  (if (and slist (cdr slist))
+    (cons (unword:quote (car slist)) (cons pause (unword:sub (cdr slist))))
+    (list (apply 'unword:quote slist))
+  )
+)
+
+(defun unword (atype list-string pause quotation)
   (if (and (member-of-option-p
              'unword
              'atype
@@ -58,6 +66,7 @@
            )
            (vl-every 'stringp list-string)
            (stringp pause)
+           (stringp quotation)
       )
     (if (not (endp list-string))
       (coerce (to-variantp-string
