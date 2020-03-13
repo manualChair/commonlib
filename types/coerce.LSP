@@ -62,7 +62,7 @@
            '(REAL . identity)
            '(STR . rtos)
            '(SYM . identity)
-           (cons VARIANT
+           (cons 'VARIANT
                  (function
                    (lambda (value)
                      (vlax-make-variant value vlax-vbDouble)
@@ -721,7 +721,7 @@
 )
 
 (defun coerce:check (value)
-  (not (null (member (type-of value)
+  (not (null (member (type value)
                      (cdr (assoc (coerce:type-group result-type)
                                  *coerce:result-type-table*
                           )
@@ -751,7 +751,7 @@
         (mapcar 'car *coerce:type-groups*)
       )
     (if (null result-type)
-      (if (= (type-of object) 'SYM)
+      (if (= (type object) 'SYM)
         (if (= object :vlax-false)
           nil
           (not (null object))
