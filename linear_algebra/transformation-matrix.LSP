@@ -56,6 +56,7 @@
 ;;;   https://opensource.org/licenses/mit-license.php       
 ;;; +------------------------------------------------------+
 
+(include 'default "./common/default")
 (include 'subseq "./sequences/subseq")
 (include 'vector "./linear_algebra/vector")
 (include 'matrix "./linear_algebra/matrix")
@@ -174,13 +175,13 @@
 
 (defun transformation-matrix (origin rotation scale)
   (matrix:Product-r
-    (append (if (not (vector:zerop origin))
+    (append (if (and (not (null origin)) (not (vector:zerop origin)))
               (list (translation-matrix origin))
             )
-            (if (not (vector:zerop rotation))
+            (if (and (not (null rotation)) (not (vector:zerop rotation)))
               (list (transformation-matrix:rotation rotation))
             )
-            (list (scale-matrix scale))
+            (list (scale-matrix (default scale ''(1.0 1.0 1.0))))
     )
   )
 )
