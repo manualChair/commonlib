@@ -98,7 +98,7 @@ The differences between the folders are summarized below. If you want to work wi
 
 Folder	|Target	|Description
 ---|---|---
-conces	|List	|Lists, including multi-dimensional lists
+conses	|List	|Lists, including multi-dimensional lists
 strings	|Sequence	|Strings and one-dimensional lists that can be converted to string
 sequences	|Sequence	|Generic one-dimensional lists, including strings and lists that can be converted to string
 
