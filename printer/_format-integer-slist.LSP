@@ -1,12 +1,14 @@
-;;;(include 'format:integer->slist "./strings/_format-integer-slist")
+;;;(include 'format:integer->slist "./printer/_format-integer-slist")
 
-;;;(format:integer->slist atype integer radix width add-sign)
+;;;(format:integer->slist integer radix width pad-code add-sign)
 ;;;
 ;;;integer : integer
 ;;;
 ;;;radix : integer (2~36) or if nil 10
 ;;;
 ;;;width : integer or nil
+;;;
+;;;pad-code : integer or nil
 ;;;
 ;;;add-sign : T or nil
 ;;;
@@ -18,13 +20,13 @@
 ;;;   https://opensource.org/licenses/mit-license.php       
 ;;; +------------------------------------------------------+
 
-;;;_$ (format:integer->slist 255 10 nil nil)
+;;;_$ (format:integer->slist 255 10 nil nil nil)
 ;;;(50 53 53)
-;;;_$ (format:integer->slist 255 10 5 nil)
-;;;(48 48 50 53 53)
-;;;_$ (format:integer->slist 255 10 5 T)
-;;;(43 48 50 53 53)
-;;;_$ (format:integer->slist 255 2 nil nil)
+;;;_$ (format:integer->slist 255 10 5 nil nil)
+;;;(32 32 50 53 53)
+;;;_$ (format:integer->slist 255 10 5 nil T)
+;;;(43 32 50 53 53)
+;;;_$ (format:integer->slist 255 2 nil nil nil)
 ;;;(49 49 49 49 49 49 49 49)
 
 (include 'default "./common/default")
@@ -53,6 +55,7 @@
                       width
                     )
                   )
+            pad-code (default pad-code (ascii " "))
       )
       (if (zerop integer)
         (append sign
