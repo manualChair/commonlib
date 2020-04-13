@@ -6,6 +6,7 @@
 ;;;   https://opensource.org/licenses/mit-license.php       
 ;;; +------------------------------------------------------+
 
+(include 'type-of "./types/type-of")
 (include 'defstruct "./structures/defstruct")
 (include 'concatenate "./sequences/concatenate")
 (include '*multi-byte-char:types*
@@ -18,16 +19,16 @@
                     (list mtype1 '(45 99 111 100 101) ;|"-code"|;)
                   )
   )
-  (- (apply func-code mchar1) (apply func-code mchar2))
+  (- (apply func-code (list mchar1)) (apply func-code (list mchar2)))
 )
 
 (defun multi-byte-char:compare (mchar1 mchar2 / mtype1 mtype2)
-  (if (= (setq mtype1 (structure-type-of mchar1))
-         (setq mtype2 (structure-type-of mchar2))
+  (if (= (setq mtype1 (type-of mchar1))
+         (setq mtype2 (type-of mchar2))
       )
     (multi-byte-char:compare:same-type)
-    (if (member (structure-type-of char1)
-                (member (structure-type-of char2) *multi-byte-char:types*)
+    (if (member (type-of char1)
+                (member (type-of char2) *multi-byte-char:types*)
         )
       1
       -1
