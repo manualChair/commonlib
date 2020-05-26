@@ -12,7 +12,11 @@
 ;;;   https://opensource.org/licenses/mit-license.php       
 ;;; +------------------------------------------------------+
 
-(include '*multi-byte-char:function* "./types/multibyte/multi-byte-char-func")
+(include '*LISPSYS* "./common/LISPSYS")
+(include 'plusp "./numbers/plusp")
+(include '*multi-byte-char:function*
+         "./types/multibyte/multi-byte-char-func"
+)
 
 (defun decode-multibytecharactor:sub (tlist)
   (if tlist
@@ -36,9 +40,15 @@
   )
 )
 
-
-(defun list->string (clist)
-  (vl-list->string
-    (apply 'append (mapcar 'decode-multibytecharactor clist))
-  )
+(setq list->string
+       (if (plusp *LISPSYS*)
+         vl-list->string
+         (lambda (clist)
+           (vl-list->string
+             (apply 'append
+                    (mapcar 'decode-multibytecharactor clist)
+             )
+           )
+         )
+       )
 )
