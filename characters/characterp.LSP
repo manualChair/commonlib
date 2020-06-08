@@ -17,9 +17,12 @@
 (include 'plusp "./numbers/plusp")
 (include 'multi-byte-char-p "./types/multibyte/multi-byte-char-p")
 
-(defun characterp (item) 
-  (or (plusp *LISPSYS*)
-      (and (integerp item) (<= 0 item) (<= item 255))
-      (multi-byte-char-p item)
-  )
+(setq characterp (if (plusp *LISPSYS*) 
+                   integerp
+                   (lambda (item) 
+                     (or (and (integerp item) (<= 0 item) (<= item 255)) 
+                         (multi-byte-char-p item)
+                     )
+                   )
+                 )
 )
