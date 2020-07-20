@@ -11,16 +11,17 @@
 ;;;_$ (adjoin 'z '(a b c) nil)
 ;;;(Z A B C)
 
+(include 'default "./common/default")
 (include 'functionp "./flow/functionp")
 
-(defun adjoin (newItem alist test-func)
+(defun adjoin (newitem alist test-func)
   (if (functionp (eval (setq test-func (default test-func ''eq))))
     (if (vl-member-if
-          (function (lambda (item) (apply test-func (list newItem item))))
+          (function (lambda (item) (apply test-func (list newitem item))))
           alist
         )
       alist
-      (cons newItem alist)
+      (cons newitem alist)
     )
     (exit)
   )
